@@ -1,13 +1,37 @@
 package com.Skillnext;
 
-/**
- * Hello world!
- *
- */
+import java.util.Scanner;
+
 public class App 
 {
-    public static void main( String[] args )
+    public static void main(String[] args) 
     {
-        System.out.println( "Hello World!" );
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+        
+        if (isPalindrome(input)) {
+            System.out.println(input + " is a palindrome.");
+        } else {
+            System.out.println(input + " is not a palindrome.");
+        }
+        
+        sc.close();
+    }
+    
+    public static boolean isPalindrome(String str) {
+        str = str.replaceAll("\\s+", "").toLowerCase(); // remove spaces & lowercase
+        
+        int left = 0;
+        int right = str.length() - 1;
+        
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
     }
 }
